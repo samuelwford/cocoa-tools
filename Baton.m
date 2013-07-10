@@ -33,15 +33,15 @@
 
 - (void)pass {
     OSAtomicIncrement32(&_passes);
-    CVLog(@"%@ Baton Passed (%d)", self.name, _passes);
+    NSLog(@"%@ Baton Passed (%d)", self.name, _passes);
 }
 
 - (void)finish {
     OSAtomicDecrement32(&_passes);
-    CVLog(@"%@ Baton Finished (%d)", self.name, _passes);
+    NSLog(@"%@ Baton Finished (%d)", self.name, _passes);
     
     if (_passes == 0) {
-        CVLog(@"%@ Baton Calling Completion Block", self.name);
+        NSLog(@"%@ Baton Calling Completion Block", self.name);
         self.completion(_cancelled);
     }
 }
